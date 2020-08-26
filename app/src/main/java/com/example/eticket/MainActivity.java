@@ -3,7 +3,9 @@ package com.example.eticket;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,8 +19,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
-Button signup_btn,login_btn;
-TextView user_txt,pass_txt;
+    Button signup_btn,login_btn,rem_btn;
+    TextView user_txt,pass_txt;
+    String username;
+    String pass;
+    SharedPreferences sh,sh2;
     String pass_db;
     DatabaseReference reff;
     @Override
@@ -31,6 +36,9 @@ TextView user_txt,pass_txt;
         login_btn  =findViewById(R.id.login_btn);
         user_txt = findViewById(R.id.username_txt);
         pass_txt = findViewById(R.id.password_txt);
+        rem_btn  =findViewById(R.id.rem_btn);
+        sh = getSharedPreferences("user_details", Context.MODE_PRIVATE);
+
 
 
         signup_btn.setOnClickListener(new View.OnClickListener() {
@@ -44,8 +52,8 @@ TextView user_txt,pass_txt;
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = user_txt.getText().toString().trim();
-                String pass = pass_txt.getText().toString().trim();
+                 username = user_txt.getText().toString().trim();
+                 pass = pass_txt.getText().toString().trim();
 
                 if(username=="" || username.equals(""))
                 {
@@ -77,6 +85,7 @@ TextView user_txt,pass_txt;
                     {
 
                         Toast.makeText(MainActivity.this,"Login successful",Toast.LENGTH_SHORT).show();
+
                         pass_txt.setText("");
                         user_txt.setText("");
                         Intent star = new Intent(getApplicationContext(),main_menu.class);
@@ -93,6 +102,9 @@ TextView user_txt,pass_txt;
 
             }
         });
+
+
+
 
     }
 }
