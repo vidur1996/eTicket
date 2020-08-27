@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     TextView user_txt,pass_txt;
     String username;
     String pass;
-    SharedPreferences sh,sh2;
+
     String pass_db;
     DatabaseReference reff;
     @Override
@@ -37,8 +37,15 @@ public class MainActivity extends AppCompatActivity {
         user_txt = findViewById(R.id.username_txt);
         pass_txt = findViewById(R.id.password_txt);
         rem_btn  =findViewById(R.id.rem_btn);
-        sh = getSharedPreferences("user_details", Context.MODE_PRIVATE);
+        SharedPreferences sh2 = getApplicationContext().getSharedPreferences("user_details", Context.MODE_PRIVATE);
+        String uname = sh2.getString("user","");
+        String p2 = sh2.getString("pass","");
 
+        if(uname!="" || uname.equals(""))
+        {
+            user_txt.setText(uname);
+            pass_txt.setText(p2);
+        }
 
 
         signup_btn.setOnClickListener(new View.OnClickListener() {
@@ -88,8 +95,12 @@ public class MainActivity extends AppCompatActivity {
 
                         pass_txt.setText("");
                         user_txt.setText("");
-                        Intent star = new Intent(getApplicationContext(),main_menu.class);
-                        startActivity(star);
+
+                        Intent star = new Intent(getApplicationContext(),saveuser.class);
+                        star.putExtra("uname",username);
+                        star.putExtra("password",pass);
+                      startActivity(star);
+
                     }
                     else
                     {
@@ -107,4 +118,5 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 }
