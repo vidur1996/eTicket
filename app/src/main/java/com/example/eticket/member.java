@@ -7,6 +7,7 @@ public class member {
     String  email;
     String num;
     String password;
+    String lock;
 
     public member()
     {
@@ -36,6 +37,14 @@ public class member {
     {
         return password;
     }
+    public String getLock()
+    {
+        return lock;
+    }
+    public void setLock(String lock)
+    {
+        this.lock=lock;
+    }
 
     public void setPassword(String password)
     {
@@ -58,4 +67,5 @@ public class member {
     {
         return email;
     }
+
 }

@@ -43,6 +43,7 @@ Button yes_btn,no_btn;
                 SharedPreferences.Editor editor  = sh.edit();
                 editor.putString("user",username);
                 editor.putString("pass",password);
+                editor.putString("del","true");
                 editor.commit();
                 Intent star = new Intent(getApplicationContext(),main_menu.class);
                 star.putExtra("uname",username);

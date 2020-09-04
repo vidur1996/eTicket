@@ -133,6 +133,7 @@ public class signup extends AppCompatActivity {
                     mem.setNum(phone);
                     mem.setUsername(user);
                     mem.setPassword(pass1);
+                    mem.setLock("0");
                     reff.child(user).setValue(mem ,complete);
 
 

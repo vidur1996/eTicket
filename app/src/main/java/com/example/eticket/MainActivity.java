@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     TextView user_txt,pass_txt;
     String username;
     String pass;
+    String lock;
+
 
     String pass_db;
     DatabaseReference reff;
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toast.makeText(MainActivity.this,"database connected",Toast.LENGTH_SHORT).show();
+
         signup_btn = findViewById(R.id.sign_btn);
         login_btn  =findViewById(R.id.login_btn);
         user_txt = findViewById(R.id.username_txt);
@@ -40,8 +42,9 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sh2 = getApplicationContext().getSharedPreferences("user_details", Context.MODE_PRIVATE);
         String uname = sh2.getString("user","");
         String p2 = sh2.getString("pass","");
+        final String del = sh2.getString("del","");
 
-        if(uname!="" || uname.equals(""))
+        if(uname!="" )
         {
             user_txt.setText(uname);
             pass_txt.setText(p2);
@@ -68,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(pass=="" ||pass.equals(""))
                 {
-                    Toast.makeText(MainActivity.this,"enter username",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,"enter password",Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
@@ -77,6 +80,36 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             pass_db = dataSnapshot.child("password").getValue().toString();
+                            lock =dataSnapshot.child("lock").getValue().toString();
+                            if(pass.equals(pass_db) || pass==pass_db)
+                            {
+
+                                Toast.makeText(MainActivity.this,"Login successful",Toast.LENGTH_SHORT).show();
+                                reff.child("lock").setValue("1");
+                                pass_txt.setText("");
+                                user_txt.setText("");
+                                if(del.equals("true"))
+                                {
+                                    Intent star = new Intent(getApplicationContext(),saveuser.class);
+                                    star.putExtra("uname",username);
+                                    star.putExtra("password",pass);
+                                    startActivity(star);
+                                }
+                                else
+                                {
+                                    Intent star2 = new Intent(getApplicationContext(),main_menu.class);
+                                    star2.putExtra("uname",username);
+                                    startActivity(star2);
+                                }
+
+
+                            }
+                            else
+                            {
+                                Toast.makeText(MainActivity.this,"wrong password",Toast.LENGTH_SHORT).show();
+                                pass_txt.setText("");
+                            }
+
                         }
 
                         @Override
@@ -88,25 +121,7 @@ public class MainActivity extends AppCompatActivity {
                     });
 
 
-                    if(pass.equals(pass_db) || pass==pass_db)
-                    {
 
-                        Toast.makeText(MainActivity.this,"Login successful",Toast.LENGTH_SHORT).show();
-
-                        pass_txt.setText("");
-                        user_txt.setText("");
-
-                        Intent star = new Intent(getApplicationContext(),saveuser.class);
-                        star.putExtra("uname",username);
-                        star.putExtra("password",pass);
-                      startActivity(star);
-
-                    }
-                    else
-                    {
-                        Toast.makeText(MainActivity.this,"wrong password",Toast.LENGTH_SHORT).show();
-                        pass_txt.setText("");
-                    }
                 }
 
 

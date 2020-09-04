@@ -10,7 +10,7 @@
     <Button
         android:id="@+id/ticket_btn"
         android:layout_width="316dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:text="TICKET"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -23,75 +23,98 @@
     <Button
         android:id="@+id/favorite_btn"
         android:layout_width="316dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:text="favorite"
+        android:textSize="18sp"
+        android:textStyle="bold"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ticket_btn"
-        app:layout_constraintVertical_bias="0.050000012" />
+        app:layout_constraintVertical_bias="0.05" />
 
     <Button
         android:id="@+id/recent"
         android:layout_width="316dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:text="recent"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/favorite_btn"
-        app:layout_constraintVertical_bias="0.050000012" />
+        app:layout_constraintVertical_bias="0.058" />
 
     <Button
         android:id="@+id/balance_btn"
         android:layout_width="316dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:text="balance"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recent"
-        app:layout_constraintVertical_bias="0.050000012" />
+        app:layout_constraintVertical_bias="0.062" />
 
     <Button
         android:id="@+id/account_btn"
         android:layout_width="316dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:text="ACCOUNT DETAILS"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/balance_btn"
-        app:layout_constraintVertical_bias="0.050000012" />
+        app:layout_constraintVertical_bias="0.069" />
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+        android:id="@+id/share_btn"
+        android:layout_width="316dp"
+        android:layout_height="54dp"
+        android:text="share balance"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/account_btn"
-        app:layout_constraintVertical_bias="0.050000012" />
+        app:layout_constraintVertical_bias="0.089" />
 
     <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
+        android:id="@+id/lastticket_btn"
+        android:layout_width="316dp"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="last ticket"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
-        app:layout_constraintVertical_bias="0.050000012" />
+        app:layout_constraintTop_toBottomOf="@+id/share_btn"
+        app:layout_constraintVertical_bias="0.138" />
+
+    <Button
+        android:id="@+id/logout_btn"
+        android:layout_width="316dp"
+        android:layout_height="wrap_content"
+        android:text="logout"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lastticket_btn"
+        app:layout_constraintVertical_bias="0.208" />
 </androidx.constraintlayout.widget.ConstraintLayout>
