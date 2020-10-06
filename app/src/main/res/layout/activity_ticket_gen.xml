@@ -8,19 +8,35 @@
     tools:context=".ticket_gen">
 
     <TextView
+        android:id="@+id/text3"
+        android:layout_width="144dp"
+        android:layout_height="33dp"
+        android:text="Ticket Price"
+        android:textColor="@android:color/background_dark"
+        android:textSize="24sp"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.367"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/distance_txt"
+        app:layout_constraintVertical_bias="0.063" />
+
+    <TextView
         android:id="@+id/textuser"
-        android:layout_width="92dp"
-        android:layout_height="30dp"
+        android:layout_width="94dp"
+        android:layout_height="44dp"
         android:text="User"
         android:textColor="@android:color/background_dark"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.307"
+        app:layout_constraintHorizontal_bias="0.181"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.039" />
+        app:layout_constraintVertical_bias="0.052" />
 
     <Spinner
         android:id="@+id/from_spin"
@@ -91,17 +107,62 @@
 
     <TextView
         android:id="@+id/user_txt"
-        android:layout_width="215dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="21dp"
+        android:layout_width="188dp"
+        android:layout_height="44dp"
         android:text=""
         android:textColor="@android:color/background_dark"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.802"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textuser"
+
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.053" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="115dp"
+        android:layout_height="34dp"
+        android:text="Distance"
+        android:textColor="@android:color/background_dark"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.332"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/to_spin"
+        app:layout_constraintVertical_bias="0.043" />
+
+    <EditText
+        android:id="@+id/distance_txt"
+        android:layout_width="215dp"
+        android:layout_height="43dp"
+        android:background="@color/common_google_signin_btn_text_dark_default"
+        android:editable="false"
+
+
+        android:ems="10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:layout_constraintVertical_bias="0.074" />
+
+    <EditText
+        android:id="@+id/price_txt"
+        android:layout_width="215dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="26dp"
+        android:background="@color/common_google_signin_btn_text_dark_default"
+
+        android:ems="10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text3"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
