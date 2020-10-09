@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent it = new Intent(getApplicationContext(),signup.class);
                 startActivity(it);
+                finish();
             }
         });
 
@@ -84,11 +85,11 @@ public class MainActivity extends AppCompatActivity {
                             if(pass.equals(pass_db) || pass==pass_db)
                             {
 
-                                Toast.makeText(MainActivity.this,"Login successful",Toast.LENGTH_SHORT).show();
+
                                 reff.child("lock").setValue("1");
                                 pass_txt.setText("");
                                 user_txt.setText("");
-                                if(del.equals("true"))
+                              /* if(del.equals("true"))
                                 {
                                     Intent star = new Intent(getApplicationContext(),saveuser.class);
                                     star.putExtra("uname",username);
@@ -96,11 +97,13 @@ public class MainActivity extends AppCompatActivity {
                                     startActivity(star);
                                 }
                                 else
-                                {
+                                {*/
                                     Intent star2 = new Intent(getApplicationContext(),main_menu.class);
+                                    Toast.makeText(MainActivity.this,"Login successful",Toast.LENGTH_SHORT).show();
                                     star2.putExtra("uname",username);
                                     startActivity(star2);
-                                }
+                                    finish();
+                              //  }
 
 
                             }

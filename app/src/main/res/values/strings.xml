@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">eTicket</string>
     <string-array name="tr_batti">
+        <item></item>
         <item>Trincomalee</item>
         <item>Kinniya</item>
         <item>Mutur</item>
-        <item>Seruwawila</item>
         <item>Serunuwara</item>
         <item>Verugal</item>
         <item>Vakarai</item>

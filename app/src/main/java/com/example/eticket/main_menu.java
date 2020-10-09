@@ -54,15 +54,19 @@ String uname;
                 reff.child("lock").setValue("0");
                 sh = getSharedPreferences("user_details", Context.MODE_PRIVATE);
 
-                SharedPreferences.Editor editor  = sh.edit();
-                editor.putString("user","");
+               //SharedPreferences.Editor editor  = sh.edit();
+               /* editor.putString("user","");
                 editor.putString("pass","");
-                editor.putString("del","false");
+                editor.putString("del","false");*/
+                SharedPreferences.Editor editor  = sh.edit();
+               editor.clear();
                 editor.commit();
 
-
                 Intent i = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(i);
+                Toast.makeText(main_menu.this, "LOGOUT SUCESSFUL", Toast.LENGTH_SHORT).show();
+               startActivity(i);
+               finish();
+
 
             }
         });
