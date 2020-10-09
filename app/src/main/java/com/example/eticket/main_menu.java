@@ -22,7 +22,7 @@ public class main_menu extends AppCompatActivity {
 Button ticket_btn,logout;
 String uname;
     SharedPreferences sh;
-    DatabaseReference reff;
+    DatabaseReference reff1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +43,7 @@ String uname;
                 Intent star = new Intent(getApplicationContext(),ticket_gen.class);
                 star.putExtra("uname",uname);
                 startActivity(star);
+                main_menu.this.finish();
             }
         });
 
@@ -50,22 +51,25 @@ String uname;
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                reff = FirebaseDatabase.getInstance().getReference().child("member").child(uname);
-                reff.child("lock").setValue("0");
+
+              reff1 = FirebaseDatabase.getInstance().getReference().child("member").child(uname);
+                reff1.child("lock").setValue("0");
+
+
                 sh = getSharedPreferences("user_details", Context.MODE_PRIVATE);
 
-               //SharedPreferences.Editor editor  = sh.edit();
-               /* editor.putString("user","");
-                editor.putString("pass","");
-                editor.putString("del","false");*/
+
                 SharedPreferences.Editor editor  = sh.edit();
-               editor.clear();
+                editor.clear();
                 editor.commit();
 
-                Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                Intent test1 = new Intent(getApplicationContext(),MainActivity.class);
                 Toast.makeText(main_menu.this, "LOGOUT SUCESSFUL", Toast.LENGTH_SHORT).show();
-               startActivity(i);
-               finish();
+               startActivity(test1);
+
+
+
+               main_menu.this.finish();
 
 
             }

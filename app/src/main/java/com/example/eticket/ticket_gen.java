@@ -41,6 +41,7 @@ public class ticket_gen extends AppCompatActivity {
         distance_txt=findViewById(R.id.distance_txt);
         price_txt = findViewById(R.id.price_txt);
         Button get_ticket_btn = findViewById(R.id.gen_ticket_btn);
+        Button back_btn1 = findViewById(R.id.back_btn1);
         star = new Intent(getApplicationContext(),ticket_display.class);
         star.putExtra("uname",uname);
 
@@ -154,7 +155,15 @@ public class ticket_gen extends AppCompatActivity {
         });
 
 
+        back_btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent backintent =  new Intent(getApplicationContext(),member.class);
+                startActivity(backintent);
+                ticket_gen.this.finish();
 
+            }
+        });
 
 
 
@@ -167,8 +176,5 @@ public class ticket_gen extends AppCompatActivity {
 
     }
 
-    public void cal_price()
-    {
 
-    }
 }
