@@ -11,16 +11,16 @@
         android:id="@+id/qrPlaceHolder"
         android:layout_width="320dp"
         android:layout_height="340dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.184"
+        app:layout_constraintTop_toBottomOf="@+id/user_txt1"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/screen_background_dark_transparent" />
 
     <TextView
-        android:id="@+id/to_txt"
+        android:id="@+id/to_txt1"
         android:layout_width="317dp"
         android:layout_height="32dp"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
@@ -32,7 +32,7 @@
         app:layout_constraintVertical_bias="0.191" />
 
     <TextView
-        android:id="@+id/from_txt"
+        android:id="@+id/from_txt1"
         android:layout_width="317dp"
         android:layout_height="32dp"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
@@ -40,11 +40,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/to_txt"
+        app:layout_constraintTop_toBottomOf="@+id/to_txt1"
         app:layout_constraintVertical_bias="0.09" />
 
     <TextView
-        android:id="@+id/distance_txt"
+        android:id="@+id/distance_txt1"
         android:layout_width="317dp"
         android:layout_height="32dp"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
@@ -52,11 +52,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/from_txt"
+        app:layout_constraintTop_toBottomOf="@+id/from_txt1"
         app:layout_constraintVertical_bias="0.186" />
 
     <TextView
-        android:id="@+id/price_txt"
+        android:id="@+id/price_txt1"
         android:layout_width="317dp"
         android:layout_height="32dp"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
@@ -64,8 +64,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/distance_txt"
+        app:layout_constraintTop_toBottomOf="@+id/distance_txt1"
         app:layout_constraintVertical_bias="0.277" />
+
+    <TextView
+        android:id="@+id/user_txt1"
+        android:layout_width="317dp"
+        android:layout_height="32dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

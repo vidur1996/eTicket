@@ -39,9 +39,19 @@ public class ticket_gen extends AppCompatActivity {
         from_spin=findViewById(R.id.from_spin);
         to_spin = findViewById(R.id.to_spin);
         distance_txt=findViewById(R.id.distance_txt);
-        price_txt = findViewById(R.id.distance_txt);
+        price_txt = findViewById(R.id.price_txt);
         Button get_ticket_btn = findViewById(R.id.gen_ticket_btn);
         Button back_btn1 = findViewById(R.id.back_btn1);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null)
+        {
+            uname = extras.getString("uname");
+        }
+
+        user_txt.setText(uname);
+
+
         star = new Intent(getApplicationContext(),ticket_display.class);
         star.putExtra("uname",uname);
 
@@ -52,7 +62,7 @@ public class ticket_gen extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 price=  Integer.parseInt(dataSnapshot.child("rate").getValue().toString());
-             //   price_txt.setText(dataSnapshot.child("rate").getValue().toString());
+                //   price_txt.setText(dataSnapshot.child("rate").getValue().toString());
             }
 
             @Override
@@ -81,13 +91,7 @@ public class ticket_gen extends AppCompatActivity {
         myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         to_spin.setAdapter(myadapter1);
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null)
-        {
-            uname = extras.getString("uname");
-        }
 
-        user_txt.setText(uname);
 
 
 
@@ -96,7 +100,7 @@ public class ticket_gen extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
                 town_from = from_spin.getSelectedItem().toString().trim();
-               // datagather();
+                // datagather();
             }
 
             @Override

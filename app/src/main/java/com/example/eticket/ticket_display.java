@@ -10,37 +10,39 @@ import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
 
 public class ticket_display extends AppCompatActivity {
-TextView to_txt,from_txt,price_txt,distance_txt;
+TextView to_txt,from_txt,price_txt1,distance_txt1,user_txt1;
     ImageView qrimage;
-    String uname,town_to,town_from,price,data,distance;
+    String uname1,town_to1,town_from1,price1,data,distance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_display);
 
-        price_txt  = findViewById(R.id.distance_txt);
-        to_txt = findViewById(R.id.to_txt);
-        from_txt = findViewById(R.id.from_txt);
-        distance_txt = findViewById(R.id.distance_txt);
+        price_txt1  = findViewById(R.id.price_txt1);
+        to_txt = findViewById(R.id.to_txt1);
+        from_txt = findViewById(R.id.from_txt1);
+        distance_txt1 = findViewById(R.id.distance_txt1);
+        user_txt1 = findViewById(R.id.user_txt1);
         qrimage = findViewById(R.id.qrPlaceHolder);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null)
         {
-            uname = extras.getString("uname");
-            town_to = extras.getString("town_to");
-            town_from = extras.getString("town_from" );
-            price= extras.getString("price" );
+            uname1 = extras.getString("uname");
+            town_to1 = extras.getString("town_to");
+            town_from1= extras.getString("town_from" );
+            price1= extras.getString("price" );
             distance =  extras.getString("distance" );
-            price_txt.setText(   "price    :- "+ price);
-            to_txt.setText(      "To       :- "+town_to);
-            from_txt.setText(    "From     :- "+ town_from);
-            distance_txt.setText("distance :- "+distance+" km");
+            user_txt1.setText(uname1);
+            price_txt1.setText(   "price    :- "+ price1);
+            to_txt.setText(       "To       :- "+town_to1);
+            from_txt.setText(     "From     :- "+ town_from1);
+            distance_txt1.setText("distance :- "+distance+" km");
 
         }
 
-        data = uname+"*"+town_to+"*"+town_from+"*"+price;
+        data = uname1+"*"+town_to1+"*"+town_from1+"*"+price1;
 
         QRGEncoder qrgEncoder = new QRGEncoder(data,null, QRGContents.Type.TEXT,500);
         try
