@@ -26,7 +26,7 @@
         app:layout_constraintHorizontal_bias="0.367"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/distance_txt"
-        app:layout_constraintVertical_bias="0.063" />
+        app:layout_constraintVertical_bias="0.071" />
 
     <TextView
         android:id="@+id/textuser"
@@ -64,9 +64,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.077" />
+        app:layout_constraintVertical_bias="0.038" />
 
     <TextView
         android:id="@+id/textView7"
@@ -108,7 +109,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text"
-        app:layout_constraintVertical_bias="0.058" />
+        app:layout_constraintVertical_bias="0.026" />
 
     <TextView
         android:id="@+id/user_txt"
@@ -154,47 +155,46 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintVertical_bias="0.074" />
-
-    <EditText
-        android:id="@+id/price_txt"
-        android:layout_width="215dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="26dp"
-        android:background="@color/common_google_signin_btn_text_dark_default"
-
-        android:ems="10"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.049" />
 
     <Button
         android:id="@+id/gen_ticket_btn"
         android:layout_width="215dp"
         android:layout_height="43dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginBottom="76dp"
         android:text="Get Ticket"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/price_txt"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.257" />
 
     <Button
         android:id="@+id/back_btn1"
         android:layout_width="215dp"
         android:layout_height="43dp"
-        android:layout_marginTop="32dp"
         android:text="BACK"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gen_ticket_btn"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.338" />
+
+    <EditText
+        android:id="@+id/price_txt"
+        android:layout_width="215dp"
+        android:layout_height="43dp"
+        android:background="@color/common_google_signin_btn_text_dark_default"
+        android:editable="false"
+        android:ems="10"
+        android:inputType="textPersonName"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text3"
+        app:layout_constraintVertical_bias="0.076" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

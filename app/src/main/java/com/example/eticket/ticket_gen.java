@@ -39,7 +39,7 @@ public class ticket_gen extends AppCompatActivity {
         from_spin=findViewById(R.id.from_spin);
         to_spin = findViewById(R.id.to_spin);
         distance_txt=findViewById(R.id.distance_txt);
-        price_txt = findViewById(R.id.price_txt);
+        price_txt = findViewById(R.id.distance_txt);
         Button get_ticket_btn = findViewById(R.id.gen_ticket_btn);
         Button back_btn1 = findViewById(R.id.back_btn1);
         star = new Intent(getApplicationContext(),ticket_display.class);
@@ -122,7 +122,8 @@ public class ticket_gen extends AppCompatActivity {
 
                             star.putExtra("town_to",town_to );
                             star.putExtra("town_from",town_from );
-                            star.putExtra("price",price );
+                            star.putExtra("price",Integer.toString(price) );
+                            star.putExtra("distance",Integer.toString(distance) );
                         }
 
                         @Override
