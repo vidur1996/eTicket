@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class main_menu extends AppCompatActivity {
-Button ticket_btn,logout;
+Button ticket_btn,logout,account_btn;
 String uname;
     SharedPreferences sh;
     DatabaseReference reff1;
@@ -30,6 +30,7 @@ String uname;
 
         ticket_btn = findViewById(R.id.ticket_btn);
         logout = findViewById(R.id.logout_btn);
+        account_btn = findViewById(R.id.account_btn);
 
 
         Bundle extras = getIntent().getExtras();
@@ -43,9 +44,23 @@ String uname;
                 Intent star = new Intent(getApplicationContext(),ticket_gen.class);
                 star.putExtra("uname",uname);
                 startActivity(star);
-                main_menu.this.finish();
+                //main_menu.this.finish();
             }
         });
+
+        account_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent star1 = new Intent(getApplicationContext(),account_edit.class);
+                star1.putExtra("uname",uname);
+                startActivity(star1);
+               // main_menu.this.finish();
+
+            }
+        });
+
+
+
 
 
         logout.setOnClickListener(new View.OnClickListener() {
