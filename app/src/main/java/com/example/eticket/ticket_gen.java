@@ -22,11 +22,11 @@ import com.google.firebase.database.ValueEventListener;
 public class ticket_gen extends AppCompatActivity {
     Spinner from_spin,to_spin;
     TextView user_txt,distance_txt , price_txt;
-    String uname ;
+    String uname ,balance;
     String town_from ="";
     String town_to ="";
     int distance, rate,price;
-    DatabaseReference reff,reff2;
+    DatabaseReference reff,reff2,reffer1;
     Intent star;
 
 
@@ -71,7 +71,20 @@ public class ticket_gen extends AppCompatActivity {
             }
         });
 
+        reffer1 = FirebaseDatabase.getInstance().getReference().child("member").child(uname).child("balance");
 
+        reffer1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                balance = dataSnapshot.getValue().toString();
+                star.putExtra("balance",balance);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
 
