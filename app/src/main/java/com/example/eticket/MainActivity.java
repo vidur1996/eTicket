@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     String username;
     String pass;
     String lock;
-
+    SharedPreferences sharedpreferences;
 
     String pass_db;
     DatabaseReference reff;
@@ -100,7 +100,8 @@ public class MainActivity extends AppCompatActivity {
                                 {
 
                                         reff.child("lock").setValue("1");
-                                        Intent star2 = new Intent(getApplicationContext(),main_menu.class);
+                                        saveProfile(username);
+                                        Intent star2 = new Intent(getApplicationContext(), MainMenuActivity.class);
                                         Toast.makeText(MainActivity.this,"Login successful",Toast.LENGTH_SHORT).show();
                                         star2.putExtra("uname",username);
                                         startActivity(star2);
@@ -142,6 +143,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public void saveProfile(String username) {
+        final String MyPREFERENCES = "PROFILE";
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString("USERNAME", username);
+        editor.commit();
     }
 
 }

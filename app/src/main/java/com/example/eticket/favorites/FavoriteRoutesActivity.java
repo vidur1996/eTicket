@@ -1,14 +1,14 @@
-package com.example.eticket;
+package com.example.eticket.favorites;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.eticket.R;
 import android.os.Bundle;
 
-public class ticket_sucess extends AppCompatActivity {
+public class FavoriteRoutesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ticket_sucess);
+        setContentView(R.layout.activity_favorite_routes);
     }
 }

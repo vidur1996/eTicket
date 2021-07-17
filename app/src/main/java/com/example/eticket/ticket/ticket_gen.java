@@ -1,4 +1,4 @@
-package com.example.eticket;
+package com.example.eticket.ticket;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.eticket.R;
+import com.example.eticket.data_model.member;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -52,7 +54,7 @@ public class ticket_gen extends AppCompatActivity {
         user_txt.setText(uname);
 
 
-        star = new Intent(getApplicationContext(),ticket_display.class);
+        star = new Intent(getApplicationContext(), ticket_display.class);
         star.putExtra("uname",uname);
 
 
@@ -176,7 +178,7 @@ public class ticket_gen extends AppCompatActivity {
         back_btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent backintent =  new Intent(getApplicationContext(),member.class);
+                Intent backintent =  new Intent(getApplicationContext(), member.class);
                 startActivity(backintent);
                 ticket_gen.this.finish();
 

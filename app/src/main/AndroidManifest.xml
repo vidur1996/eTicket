@@ -9,14 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ticket_sucess"></activity>
+        <activity android:name=".account.ShareCreditActivity"></activity>
+        <activity android:name=".account.BalanceActivity" />
+        <activity android:name=".history.RecentTravelActivity" />
+        <activity android:name=".favorites.FavoriteRoutesActivity" />
+        <activity android:name=".history.LastTicketActivity" />
+        <activity android:name=".ticket.ticket_sucess" />
         <activity android:name=".account_edit" />
-        <activity android:name=".ticket_display" />
+        <activity android:name=".ticket.ticket_display" />
+        <activity android:name=".profile.EditProfileActivity" />
+        <activity android:name=".profile.ProfileActivity" />
+        <activity android:name=".profile.ChangePasswordActivity" />
         <activity
             android:name=".saveuser"
             android:theme="@android:style/Theme.Holo.Dialog" />
-        <activity android:name=".ticket_gen" />
-        <activity android:name=".main_menu" />
+        <activity android:name=".ticket.ticket_gen" />
+        <activity android:name=".MainMenuActivity" />
         <activity android:name=".signup" />
         <activity android:name=".MainActivity">
             <intent-filter>

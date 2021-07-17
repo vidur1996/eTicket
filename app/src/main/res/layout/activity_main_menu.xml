@@ -9,13 +9,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00BCD4"
-    tools:context=".main_menu">
+    tools:context=".MainMenuActivity">
 
     <Button
         android:id="@+id/ticket_btn"
         android:layout_width="316dp"
         android:layout_height="wrap_content"
-        android:text="TICKET"
+        android:text="Generate Ticket"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -29,10 +29,9 @@
         android:id="@+id/favorite_btn"
         android:layout_width="316dp"
         android:layout_height="wrap_content"
-        android:text="favorite"
+        android:text="Favorite Routes"
         android:textSize="18sp"
         android:textStyle="bold"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
@@ -41,10 +40,10 @@
         app:layout_constraintVertical_bias="0.05" />
 
     <Button
-        android:id="@+id/recent"
+        android:id="@+id/recent_btn"
         android:layout_width="316dp"
         android:layout_height="wrap_content"
-        android:text="recent"
+        android:text="Recent Travel "
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,21 +57,21 @@
         android:id="@+id/balance_btn"
         android:layout_width="316dp"
         android:layout_height="wrap_content"
-        android:text="balance"
+        android:text="Account Balance"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recent"
+        app:layout_constraintTop_toBottomOf="@+id/recent_btn"
         app:layout_constraintVertical_bias="0.062" />
 
     <Button
         android:id="@+id/account_btn"
         android:layout_width="316dp"
         android:layout_height="wrap_content"
-        android:text="ACCOUNT DETAILS"
+        android:text="My Profile"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -86,7 +85,7 @@
         android:id="@+id/share_btn"
         android:layout_width="316dp"
         android:layout_height="54dp"
-        android:text="share balance"
+        android:text="share Credit With Friends"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

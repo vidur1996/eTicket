@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.eticket.data_model.member;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -39,12 +40,7 @@ public class signup extends AppCompatActivity {
         clear_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pass1_txt.setText("");
-                pass2_txt.setText("");
-                name_txt.setText("");
-                user_txt.setText("");
-                mail_txt.setText("");
-                phone_txt.setText("");
+                clear_data();
             }
         });
 
@@ -69,7 +65,7 @@ public class signup extends AppCompatActivity {
                 String email= mail_txt.getText().toString().trim();
                 String phone = phone_txt.getText().toString().trim();
                 member mem = new member();
-                DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child("member");
+                DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child("temp_member");
 
                 DatabaseReference.CompletionListener complete = new DatabaseReference.CompletionListener() {
                     @Override
@@ -135,7 +131,7 @@ public class signup extends AppCompatActivity {
                     mem.setPassword(pass1);
                     mem.setLock("0");
                     reff.child(user).setValue(mem ,complete);
-
+                    clear_data();
 
                 }
             }
@@ -143,5 +139,15 @@ public class signup extends AppCompatActivity {
 
 
 
+    }
+
+    void clear_data()
+    {
+        pass1_txt.setText("");
+        pass2_txt.setText("");
+        name_txt.setText("");
+        user_txt.setText("");
+        mail_txt.setText("");
+        phone_txt.setText("");
     }
 }

@@ -1,7 +1,5 @@
 package com.example.eticket;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -45,7 +43,7 @@ Button yes_btn,no_btn;
                 editor.putString("pass",password);
                 editor.putString("del","true");
                 editor.commit();
-                Intent star = new Intent(getApplicationContext(),main_menu.class);
+                Intent star = new Intent(getApplicationContext(), MainMenuActivity.class);
                 star.putExtra("uname",username);
                 startActivity(star);
             }
@@ -55,7 +53,7 @@ Button yes_btn,no_btn;
         no_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent star = new Intent(getApplicationContext(),main_menu.class);
+                Intent star = new Intent(getApplicationContext(), MainMenuActivity.class);
                 star.putExtra("uname",username);
                 startActivity(star);
             }

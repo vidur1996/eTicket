@@ -1,4 +1,4 @@
-package com.example.eticket;
+package com.example.eticket.data_model;
 
 public class member {
 

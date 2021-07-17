@@ -1,4 +1,4 @@
-package com.example.eticket;
+package com.example.eticket.ticket;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.eticket.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -83,7 +84,7 @@ public class ticket_display extends AppCompatActivity {
 
                 if(! bal1.equals(balance))
                 {
-                    Intent i1 = new Intent(getApplicationContext(),ticket_sucess.class);
+                    Intent i1 = new Intent(getApplicationContext(), ticket_sucess.class);
                     startActivity(i1);
                 }
 
