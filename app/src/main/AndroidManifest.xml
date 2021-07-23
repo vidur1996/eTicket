@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".account.ShareCreditActivity"></activity>
+        <activity android:name=".favorites.AddFavoritesActivity"></activity>
+        <activity android:name=".account.ShareCreditActivity" />
         <activity android:name=".account.BalanceActivity" />
         <activity android:name=".history.RecentTravelActivity" />
         <activity android:name=".favorites.FavoriteRoutesActivity" />

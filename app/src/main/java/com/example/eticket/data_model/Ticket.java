@@ -3,12 +3,22 @@ package com.example.eticket.data_model;
 public class Ticket {
     String ticketNo;
     String busName;
-    String ticketValue;
+    String price;
     String ticketTo;
     String ticketFrom;
+    String ticketTime;
+
+
 
     public Ticket() {
 
+    }
+    public String getTicketTime() {
+        return ticketTime;
+    }
+
+    public void setTicketTime(String ticketTime) {
+        this.ticketTime = ticketTime;
     }
 
     public String getTicketNo() {
@@ -27,12 +37,12 @@ public class Ticket {
         this.busName = busName;
     }
 
-    public String getTicketValue() {
-        return ticketValue;
+    public String getPrice() {
+        return price;
     }
 
-    public void setTicketValue(String ticketValue) {
-        this.ticketValue = ticketValue;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     public String getTicketTo() {
