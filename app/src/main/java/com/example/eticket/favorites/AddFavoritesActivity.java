@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,13 +29,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.jetbrains.annotations.NotNull;
 
 public class AddFavoritesActivity extends AppCompatActivity {
-    Spinner favo_from,favo_to;
+    Spinner favo_from, favo_to;
     Button add_favo;
-    String to,from,id;
+    String to, from, id;
 
     DatabaseReference databaseReference;
     SharedPreferences profilePreferences;
     String username;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,65 +44,72 @@ public class AddFavoritesActivity extends AppCompatActivity {
         favo_from = findViewById(R.id.spin_add_favo_from);
         favo_to = findViewById(R.id.spin_add_favo_to);
         add_favo = findViewById(R.id.btn_add_favo);
+        getUserName();
         Bundle extras = getIntent().getExtras();
-        if (extras != null)
-        {
+        if (extras != null) {
             id = extras.getString("id");
         }
         setSpinner();
 
         favo_from.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-            { from = favo_from.getSelectedItem().toString().trim(); }
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                from = favo_from.getSelectedItem().toString().trim();
+            }
+
             @Override
-            public void onNothingSelected(AdapterView<?> parent) { }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
 
         favo_to.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-            { to = favo_to.getSelectedItem().toString().trim(); }
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                to = favo_to.getSelectedItem().toString().trim();
+            }
+
             @Override
-            public void onNothingSelected(AdapterView<?> parent) { }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
 
         add_favo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validSelected()){
-                    databaseReference = FirebaseDatabase.getInstance().getReference().child("favorites");
+                if (validSelected()) {
+                    databaseReference = FirebaseDatabase.getInstance().getReference().child("favorites").child(username);
+                    saveData(id);
                 }
 
             }
         });
     }
 
-    public void setSpinner(){
-        final ArrayAdapter<String> myadapter  = new ArrayAdapter<String>(AddFavoritesActivity.this
-                ,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.tr_batti));
+    public void setSpinner() {
+        final ArrayAdapter<String> myadapter = new ArrayAdapter<String>(AddFavoritesActivity.this
+                , android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.tr_batti));
         myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         favo_from.setAdapter(myadapter);
 
-        final ArrayAdapter<String> myadapter1  = new ArrayAdapter<String>(AddFavoritesActivity.this
-                ,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.tr_batti));
+        final ArrayAdapter<String> myadapter1 = new ArrayAdapter<String>(AddFavoritesActivity.this
+                , android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.tr_batti));
         myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         favo_to.setAdapter(myadapter1);
     }
 
-    public Boolean validSelected(){
-        if(to==null || from==null){
-            Toast.makeText(this,"please select start and end destination",Toast.LENGTH_SHORT).show();
+    public Boolean validSelected() {
+        if (to == null || from == null) {
+            Toast.makeText(this, "please select start and end destination", Toast.LENGTH_SHORT).show();
             return false;
-        }else if(to==from){
-            Toast.makeText(this,"start and end destination",Toast.LENGTH_SHORT).show();
+        } else if (to == from) {
+            Toast.makeText(this, "start and end destination", Toast.LENGTH_SHORT).show();
             return false;
-        }else {
+        } else {
             return true;
         }
     }
 
-    public void getUserName(){
+    public void getUserName() {
         profilePreferences = getSharedPreferences("PROFILE", Context.MODE_PRIVATE);
         username = profilePreferences.getString("USERNAME", "");
     }
@@ -135,5 +144,8 @@ public class AddFavoritesActivity extends AppCompatActivity {
 
                     }
                 }).show();
+    }
+
+
 
 }

@@ -13,7 +13,7 @@ import com.example.eticket.data_model.Ticket;
 import java.util.ArrayList;
 
 
-    public class RecentTicketAdapter extends RecyclerView.Adapter<RecentTicketAdapter.ViewHolder> {
+public class RecentTicketAdapter extends RecyclerView.Adapter<RecentTicketAdapter.ViewHolder> {
         private final ArrayList<Ticket> userset;
         public RecentTicketAdapter(ArrayList<Ticket> arrayList) {
             userset = arrayList;
