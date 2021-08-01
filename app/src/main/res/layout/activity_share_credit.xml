@@ -69,15 +69,43 @@
         android:id="@+id/et_share_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
         android:ems="10"
-        android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@id/label_share_username"
+        android:hint="User name"
+        android:text="Tharshi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label_share_username" />
+
+    <TextView
+        android:id="@+id/label_share_amount"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/et_share_username"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:padding="15dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:text="Enter the Credit You Want To Share " />
+
+    <EditText
+        android:id="@+id/et_share_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="20dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:hint="User name" />
+        android:layout_marginEnd="80dp"
+        android:ems="10"
+        android:hint="Rs."
+        android:inputType="number"
+        android:text="500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label_share_amount" />
 
     <Button
         android:id="@+id/btn_share_credit"
@@ -88,5 +116,5 @@
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_share_username"/>
+        app:layout_constraintTop_toBottomOf="@id/et_share_amount"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
