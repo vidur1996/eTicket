@@ -1,19 +1,5 @@
 package com.example.eticket.account;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import com.example.eticket.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ServerValue;
-import com.google.firebase.database.ValueEventListener;
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -23,17 +9,30 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.example.eticket.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.jetbrains.annotations.NotNull;
 
 public class ShareCreditActivity extends AppCompatActivity {
-     TextView tv_share_balance;
-      EditText et_share_username,et_share_amount;
+    TextView tv_share_balance;
+    EditText et_share_username,et_share_amount;
     Button btn_share_credit;
     String username,myBalance,friendBalance;
-    Boolean successUser = false,successFriend = false;
+    Boolean validUser = false, successUser = false,successFriend = false;
     int shareAmount;
-       ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,26 +47,45 @@ public class ShareCreditActivity extends AppCompatActivity {
         btn_share_credit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(et_share_username.getText().toString()!=""){
-                    if(et_share_amount.getText().toString()!=""){
-                        validateUser(et_share_username.getText().toString().trim());
-                    }else {
-                        showAlert("Error","plesse enter the amount");
-                    }
-
-                }else{
-                    showAlert("Error","plesse enter the username");
+                if(validatedata()){
+                        validateUser(et_share_username.getText().toString());
                 }
 
             }
         });
 
-
-
     }
     public void getUserName(){
-       SharedPreferences profilePreferences = getSharedPreferences("PROFILE", Context.MODE_PRIVATE);
+        SharedPreferences profilePreferences = getSharedPreferences("PROFILE", Context.MODE_PRIVATE);
         username = profilePreferences.getString("USERNAME", "");
+    }
+
+    public void showAlert(String title,String message) {
+        new MaterialAlertDialogBuilder(this)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+
+                    }
+                }).show();
+
+    }
+    public Boolean validatedata(){
+        if (et_share_username.getText().toString() != "") {
+            if (et_share_amount.getText().toString() != "") {
+                    return true;
+
+            } else {
+                showAlert("Error", "please enter the amount");
+                return false;
+            }
+        } else {
+            showAlert("Error", "please enter the username");
+            return false ;
+        }
     }
 
     public void getAcccountBalance() {
@@ -89,52 +107,47 @@ public class ShareCreditActivity extends AppCompatActivity {
 
     }
 
-    public int getFriendBalance(String friend) {
-        DatabaseReference databaseReferenceAmount = FirebaseDatabase.getInstance().getReference().child("member").child(friend).child("balance");
 
-        databaseReferenceAmount.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                friendBalance = snapshot.getValue().toString();
-                Log.e("*****",snapshot.getValue().toString());
-                tv_share_balance.setText("Rs. "+friendBalance);
-            }
-
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-            }
-        });
-            return Integer.parseInt(friendBalance);
-
-
-    }
-
-    public void showAlert(String title,String message) {
+    public void showConfirmation(String title,String message) {
         new MaterialAlertDialogBuilder(this)
                 .setTitle(title)
                 .setMessage(message)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                            if (checkCredit()){
+                                shareCredit(et_share_username.getText().toString());
+                            }
 
                     }
-                }).show();
+                }).setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+        }).show();
 
     }
 
-    public void  validateUser(final String friend){
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("member").child(friend);
+    public void   validateUser(final String friend){
+        final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("member").child(friend);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    checkCredit(friend);
+
+
+                    friendBalance = snapshot.child("balance").getValue().toString();
+                    showConfirmation("Confirmation", "are you sure you want to share "+et_share_amount.getText().toString());
+                    databaseReference.removeEventListener(this);
                 }
                 else{
                     showAlert("Error","User not found, Please check the username");
+                    databaseReference.removeEventListener(this);
                 }
+
+
+
 
             }
 
@@ -143,28 +156,30 @@ public class ShareCreditActivity extends AppCompatActivity {
 
             }
         });
-    }
 
-    public void checkCredit(String friend){
+
+    }
+    public Boolean checkCredit() {
         shareAmount = Integer.parseInt(et_share_amount.getText().toString());
-        if(Integer.parseInt(myBalance)>(shareAmount+100) )
-        {
-            shareCredit(friend);
-        }else {
-            showAlert("Balance Insufficient","Balance should be greater than Rs.100 after Transfer");
+        if (Integer.parseInt(myBalance) > (shareAmount + 100)) {
+            return true;
+
+        } else {
+            showAlert("Balance Insufficient", "Balance should be greater than Rs.100 after Transfer");
+            return false;
         }
 
     }
     public void shareCredit(String friend){
-       int totalFriendBalance =  getFriendBalance(friend)+shareAmount;
+        int totalFriendBalance = Integer.parseInt(friendBalance) +shareAmount;
         DatabaseReference databaseReferenceFriend = FirebaseDatabase.getInstance().getReference().child("member").child(friend);
-                DatabaseReference.CompletionListener completionListener = new DatabaseReference.CompletionListener() {
-                    @Override
-                    public void onComplete(@Nullable @org.jetbrains.annotations.Nullable DatabaseError error, @NonNull @NotNull DatabaseReference ref) {
-                        updateUser();
-                        successFriend = true;
-                    }
-                };
+        DatabaseReference.CompletionListener completionListener = new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(@Nullable @org.jetbrains.annotations.Nullable DatabaseError error,  @NotNull DatabaseReference ref) {
+                  updateUser();
+
+            }
+        };
 
 
         databaseReferenceFriend.child("balance").setValue(totalFriendBalance,completionListener);
@@ -172,21 +187,18 @@ public class ShareCreditActivity extends AppCompatActivity {
     }
 
     public void updateUser(){
-        if(successFriend) {
+
             DatabaseReference databaseReferenceUser = FirebaseDatabase.getInstance().getReference().child("member").child(username);
             databaseReferenceUser.child("balance").setValue(Integer.parseInt(myBalance)-shareAmount).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull @NotNull Task<Void> task) {
-                    successUser = true;
                     alert();
-
                 }
             });
-        }
     }
 
     public void alert() {
-        if(successUser) {
+
             new MaterialAlertDialogBuilder(this)
                     .setTitle("Success")
                     .setMessage("credit amount " + shareAmount + " Successful")
@@ -195,11 +207,10 @@ public class ShareCreditActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialogInterface, int i) {
                             et_share_amount.setText("");
                             et_share_username.setText("");
-                            getAcccountBalance();
+                           // getAcccountBalance();
 
-                        }
-                    }).show();
-        }
+                        }}).show();
+
 
     }
 
