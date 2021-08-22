@@ -74,7 +74,6 @@
         android:layout_marginEnd="40dp"
         android:ems="10"
         android:hint="User name"
-        android:text="Tharshi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/label_share_username" />
@@ -102,7 +101,6 @@
         android:ems="10"
         android:hint="Rs."
         android:inputType="number"
-        android:text="500"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/label_share_amount" />
