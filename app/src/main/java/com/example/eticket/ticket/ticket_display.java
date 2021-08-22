@@ -48,10 +48,10 @@ public class ticket_display extends AppCompatActivity {
             distance =  extras.getString("distance" );
             user_txt1.setText(uname1);
             balance = extras.getString("balance" );
-            price_txt1.setText(   "price    :- "+ price1);
-            to_txt.setText(       "To       :- "+town_to1);
-            from_txt.setText(     "From     :- "+ town_from1);
-            distance_txt1.setText("distance :- "+distance+" km");
+            price_txt1.setText(   "Rs. "+price1);
+            to_txt.setText(       town_to1);
+            from_txt.setText(     town_from1);
+            distance_txt1.setText(distance+" km");
 
         }
 

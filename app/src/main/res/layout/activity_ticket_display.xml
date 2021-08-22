@@ -3,69 +3,165 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#00BCD4"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_qr"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
 
     <ImageView
         android:id="@+id/qrPlaceHolder"
         android:layout_width="320dp"
         android:layout_height="340dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="13dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_txt1"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/screen_background_dark_transparent" />
+    </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/to_txt1"
-        android:layout_width="317dp"
-        android:layout_height="32dp"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_details"
+        app:layout_constraintTop_toBottomOf="@id/card_qr"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/qrPlaceHolder"
-        app:layout_constraintVertical_bias="0.191" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/label_to"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="24sp"
+                android:text="To            : -"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                 />
 
-    <TextView
-        android:id="@+id/from_txt1"
-        android:layout_width="317dp"
-        android:layout_height="32dp"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/to_txt1"
-        app:layout_constraintVertical_bias="0.09" />
+            <TextView
+                android:id="@+id/to_txt1"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="24sp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toEndOf="@id/label_to"
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
-    <TextView
-        android:id="@+id/distance_txt1"
-        android:layout_width="317dp"
-        android:layout_height="32dp"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/from_txt1"
-        app:layout_constraintVertical_bias="0.186" />
+            <TextView
+                android:id="@+id/label_from"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="24sp"
+                android:text="From       : -"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/to_txt1"
+                 />
 
-    <TextView
-        android:id="@+id/price_txt1"
-        android:layout_width="317dp"
-        android:layout_height="32dp"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/distance_txt1"
-        app:layout_constraintVertical_bias="0.277" />
+            <TextView
+                android:id="@+id/from_txt1"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="24sp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toEndOf="@+id/label_from"
+                app:layout_constraintTop_toBottomOf="@+id/to_txt1" />
+
+            <TextView
+                android:id="@+id/label_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="24sp"
+                android:text="Distance : -"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/from_txt1"
+                 />
+            <TextView
+                android:id="@+id/distance_txt1"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="24sp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toEndOf="@id/label_distance"
+                app:layout_constraintTop_toBottomOf="@+id/from_txt1"
+                 />
+
+            <TextView
+                android:id="@+id/label_price"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="24sp"
+                android:text="Price       : -"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/label_distance"
+                 />
+
+            <TextView
+                android:id="@+id/price_txt1"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="24sp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toEndOf="@id/label_price"
+                app:layout_constraintTop_toBottomOf="@+id/distance_txt1" />
+
+            <TextView
+                android:id="@+id/tx_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center_horizontal"
+
+                android:text="Please show this Ticket to Conducter and get confirmed"
+                android:textColor="@color/red"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/price_txt1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/user_txt1"
@@ -73,6 +169,7 @@
         android:layout_height="32dp"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="24sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

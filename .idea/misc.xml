@@ -4,11 +4,24 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/computer_science/android/project/app/src/main/res/drawable/bg_round_border_et.xml" value="0.2203125" />
+        <entry key="..\:/computer_science/android/project/app/src/main/res/layout/activity_add_favorites.xml" value="0.17422222222222222" />
+        <entry key="..\:/computer_science/android/project/app/src/main/res/layout/activity_admin_profile.xml" value="0.17657657657657658" />
+        <entry key="..\:/computer_science/android/project/app/src/main/res/layout/activity_balance.xml" value="0.17422222222222222" />
+        <entry key="..\:/computer_science/android/project/app/src/main/res/layout/activity_edit_profile.xml" value="0.17422222222222222" />
+        <entry key="..\:/computer_science/android/project/app/src/main/res/layout/activity_favorite_routes.xml" value="0.17422222222222222" />
+        <entry key="..\:/computer_science/android/project/app/src/main/res/layout/activity_last_ticket.xml" value="0.17422222222222222" />
         <entry key="..\:/computer_science/android/project/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/computer_science/android/project/app/src/main/res/layout/activity_main_menu.xml" value="0.33" />
+        <entry key="..\:/computer_science/android/project/app/src/main/res/layout/activity_profile.xml" value="0.17657657657657658" />
+        <entry key="..\:/computer_science/android/project/app/src/main/res/layout/activity_recent_travel.xml" value="0.17422222222222222" />
+        <entry key="..\:/computer_science/android/project/app/src/main/res/layout/activity_saveuser.xml" value="0.17657657657657658" />
         <entry key="..\:/computer_science/android/project/app/src/main/res/layout/activity_share_credit.xml" value="0.1638888888888889" />
         <entry key="..\:/computer_science/android/project/app/src/main/res/layout/activity_signup.xml" value="0.33" />
+        <entry key="..\:/computer_science/android/project/app/src/main/res/layout/activity_ticket_display.xml" value="0.33" />
         <entry key="..\:/computer_science/android/project/app/src/main/res/layout/activity_ticket_gen.xml" value="0.17422222222222222" />
+        <entry key="..\:/computer_science/android/project/app/src/main/res/layout/activity_ticket_sucess.xml" value="0.17657657657657658" />
+        <entry key="..\:/computer_science/android/project/app/src/main/res/layout/item_favourite_route.xml" value="0.17422222222222222" />
+        <entry key="..\:/computer_science/android/project/app/src/main/res/layout/item_recent_ticket.xml" value="0.17422222222222222" />
         <entry key="..\:/computer_science/android/project/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1046875" />
       </map>
     </option>
