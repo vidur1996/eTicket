@@ -4,14 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.eticket.data_model.member;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -77,49 +82,33 @@ public class signup extends AppCompatActivity {
                             }
                             else
                             {
-                                Toast.makeText(signup.this, "registration succesful", Toast.LENGTH_SHORT).show();
+                                showAlert();
+                                //Toast.makeText(signup.this, "registration succesful", Toast.LENGTH_SHORT).show();
                             }
                         }
                     };
 
-                if(name.equals("") || email.equals("") || phone.equals("")) {
-                    if (name.equals(""))
-                    {
-                        makeText(signup.this, "enter the name", Toast.LENGTH_SHORT).show();
+                if(name.equals("") || email.equals("") ||
+                        phone.equals("") || user.equals("")||
+                        pass1.equals("") ||pass2.equals("") ) {
+                    if (name.equals("")) {
+                        showMsg( "enter the name");
+                    } else if (email.equals("")) {
+                        showMsg("enter the email address");
+                    } else if (phone.equals("")) {
+                        showMsg("enter the phone number");
+                    } else if (user.equals("")) {
+                        showMsg("enter username");
+                    } else if (pass1.equals("") || pass2.equals("")) {
+                        showMsg("enter passsword");
                     }
-                    else if (email.equals(""))
-                    {
-                        makeText(signup.this, "enter the email address", Toast.LENGTH_SHORT).show();
-                    }
-                    else if(phone.equals(""))
-                    {
-                        makeText(signup.this, "enter the phone number", Toast.LENGTH_SHORT).show();
-                    }
-
-
                 }
-                else if( user.equals("")  )
-                {
-                    makeText(signup.this, "enter username", Toast.LENGTH_SHORT).show();
-                }
-
-
-
-                else if(pass1.equals("") ||pass2.equals("") )
-                {
-                    makeText(signup.this, "enter passsword", Toast.LENGTH_SHORT).show();
-                }
-
-
                 else  if( ! pass1.equals(pass2)) {
-                    makeText(signup.this, "both passsword does not match", Toast.LENGTH_SHORT).show();
+                    showMsg("both passsword does not match");
                 }
-
-
-
-
-
-
+                else if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    showMsg( "invalid email");
+                }
 
                 else
                 {
@@ -138,6 +127,43 @@ public class signup extends AppCompatActivity {
         });
 
 
+
+
+    }
+
+    public void showAlert() {
+
+        new MaterialAlertDialogBuilder(this)
+                .setTitle("Registration successFul")
+                .setMessage("You will receive a the status from an admin ")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        Intent it = new Intent(getApplicationContext(),MainActivity.class);
+                        startActivity(it);
+                        finish();
+
+                    }
+                }).show();
+
+    }
+
+    public void showMsg(String msg) {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+        new MaterialAlertDialogBuilder(this)
+                .setTitle("Error")
+                .setMessage(msg)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                }).show();
 
     }
 
